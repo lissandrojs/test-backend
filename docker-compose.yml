@@ -1,0 +1,26 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:14
+    container_name: postgres
+    ports:
+      - "${DB_PORTDB_PORT}:5432"
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+
+# version: '3'
+# services:
+#   postgres:
+#     image: postgres:14
+#     container_name: postgres
+#     ports:
+#       - "${DB_PORT}:5432"
+#     volumes:
+#       - ./db_dump.sql:/docker-entrypoint-initdb.d/db_dump.sql
+#       - ./postgres_data:/var/lib/postgresql/data
+#     environment:
+#       POSTGRES_USER: ${DB_USERNAME}
+#       POSTGRES_PASSWORD: ${DB_PASSWORD}
+#       POSTGRES_DB: ${DB_NAME}
