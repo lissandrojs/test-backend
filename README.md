@@ -9,12 +9,13 @@ Uma aplicação robusta para gerenciamento de filas desenvolvida com NestJS, Typ
 - **PostgreSQL** - Banco de dados relacional
 - **Swagger** - Documentação automática da API
 - **TypeScript** - Superset JavaScript com tipagem estática
-
+- **Docker** - Configuração incial
 ## 📋 Pré-requisitos
 
 - Node.js (versão 18 ou superior)
 - PostgreSQL (versão 14 ou superior)
 - npm ou yarn
+- Docker instalado no seu computador
 
 ## 🔧 Instalação
 
@@ -49,11 +50,10 @@ Uma aplicação robusta para gerenciamento de filas desenvolvida com NestJS, Typ
    DB_NAME=nome_do_banco
    ```
 
-5. **Execute as migrações do banco**
-   ```bash
-   npm run migration:run
-   # ou
-   yarn migration:run
+5. **Suguestão caso não o banco de dados configurado e sem a versao correta do node, fica a opção de utilizar o docker**
+   ```
+   como o docker instalador e configurado
+   Execute o comando: docker-compose up -d
    ```
 
 ## 🚀 Executando a aplicação
