@@ -1,9 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsUrl } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class ProviderExternalApiDto {
   @ApiProperty({ description: 'API URL', example: 'https://api.example.com/' })
-  @IsUrl()
   @IsString()
   url: string;
 

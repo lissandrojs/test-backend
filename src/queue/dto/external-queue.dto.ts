@@ -1,14 +1,6 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { Type } from 'class-transformer';
-import { IsBoolean, IsOptional } from 'class-validator';
-
 export class ExternalQueueDto {
   id: number;
   name: string;
-  @ApiProperty({ description: 'Queue status', example: true, required: false })
-  @IsOptional()
-  @IsBoolean()
-  @Type(() => Boolean)
   connected: boolean;
   authenticated: boolean;
   authenticatedNumber: string;
