@@ -16,7 +16,6 @@ export class ProvidersService {
       const response = await firstValueFrom(
         this.httpService.post<ExternalQueueDto[]>(externalUrl, { apiKey }),
       );
-
       return response.data;
     } catch (error: unknown) {
       if (error instanceof Error) {

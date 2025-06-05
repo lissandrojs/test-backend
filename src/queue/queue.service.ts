@@ -51,39 +51,30 @@ export class QueueService {
     for (const currentQueue of externalQueues) {
       let internalQueue = await this.findOne(currentQueue.id);
       if (currentQueue.connected === false) {
-        // Vamos tratar apenas filas desconectadas e as que foram reconectadas
-        // Verifica se a fila já existe no banco
-
         if (internalQueue) {
-          // Atualiza a fila existente
           internalQueue = await this.update(internalQueue.id, {
-            status: false,
+            status: currentQueue.enabled,
             verification_date: verificationDate,
             waiting_chats: currentQueue.openChats || 0,
           });
         } else {
-          // Cria nova fila
           internalQueue = await this.create({
             queue_name: currentQueue.name,
             instance: currentQueue.type,
-            status: false,
+            status: currentQueue.enabled,
             verification_date: verificationDate,
             waiting_chats: currentQueue.openChats || 0,
           });
         }
       } else if (currentQueue.connected === true) {
-        // Verifica se a fila estava desconectada anteriormente
-
         if (internalQueue && currentQueue.connected === true) {
-          // A fila estava desconectada e agora está conectada
           await this.update(internalQueue.id, {
-            status: true,
+            status: currentQueue.enabled,
             verification_date: verificationDate,
             connection_date: verificationDate,
             waiting_chats: currentQueue.openChats || 0,
           });
         }
-        // Se a fila já estava conectada ou é nova e conectada, não armazenamos
       }
     }
   }
